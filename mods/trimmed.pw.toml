@@ -1,0 +1,13 @@
+name = "Trimmed"
+filename = "trimmed-neo-1.21-3.0.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "c1ee534f00f4ee476e868f4db4dea99c7d41570d"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 5424737
+project-id = 857036

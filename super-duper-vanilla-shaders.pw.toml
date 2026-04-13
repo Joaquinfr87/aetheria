@@ -1,0 +1,13 @@
+name = "Super Duper Vanilla Shaders"
+filename = "superDuperVanilla.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "f2d6d259368e8b8d8807abb1ac28aaa7cff85b8c"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6745820
+project-id = 534748

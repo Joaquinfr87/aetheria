@@ -1,0 +1,13 @@
+name = "E-LITE shaders (MakeUp edit)"
+filename = "§lE-LITE shaders 5.0.1.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "6166390eaa14609a512040f7e5da630485689b10"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7753834
+project-id = 1155908

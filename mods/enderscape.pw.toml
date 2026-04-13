@@ -1,0 +1,13 @@
+name = "Enderscape"
+filename = "enderscape-neoforge-1.0.9+mc1.21.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "5d45e8282989817ee04682620c9351c76dc62308"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6875961
+project-id = 536638
