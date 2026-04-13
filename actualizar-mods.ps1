@@ -7,20 +7,24 @@
 #>
 
 # ==========================================
-# 1. Entorno y Configuración
+# 1. Entorno y Configuración Estricta
 # ==========================================
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-# URLs
+# URLs (Ya con el enlace RAW corregido)
 $PackwizTomlUrl = "https://raw.githubusercontent.com/Joaquinfr87/aetheria/main/pack.toml"
 $BootstrapUrl = "https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest/download/packwiz-installer-bootstrap.jar"
 
-# Directorio Portable
+# ==========================================
+# ¡LA MAGIA PORTABLE ESTÁ AQUÍ!
+# ==========================================
+# En lugar de ir a %APPDATA%, usamos el directorio actual donde está este script
 $MinecraftDir = $PSScriptRoot 
 $LogFile = Join-Path -Path $MinecraftDir -ChildPath "actualizador-servidor.log"
 $BootstrapPath = Join-Path -Path $MinecraftDir -ChildPath "packwiz-installer-bootstrap.jar"
 
+# Nos aseguramos de estar trabajando en esta misma carpeta
 Set-Location -Path $MinecraftDir
 
 # ==========================================
@@ -44,9 +48,29 @@ function Write-Log {
 if (Test-Path $LogFile) { Clear-Content $LogFile }
 Clear-Host
 Write-Log "Iniciando cliente de sincronización (Modo Portable)..." "INFO"
+Write-Log "Directorio de trabajo: $MinecraftDir" "INFO"
 
 # ==========================================
-# 3. Motor de Sincronización (Packwiz)
+# 3. Validación de Dependencias (Java)
+# ==========================================
+Write-Log "Verificando dependencias del sistema..." "INFO"
+try {
+    $JavaVer = & java -version 2>&1
+    Write-Log "Java detectado correctamente." "OK"
+} catch {
+    Write-Log "Java no está instalado o no está en el PATH." "ERROR"
+    Write-Log "Abriendo el navegador para descargar Java 21..." "WARN"
+    Start-Sleep -Seconds 2
+    Start-Process "https://adoptium.net/es/temurin/releases/?version=21"
+    
+    Write-Host "`nPor favor, instala Java y vuelve a ejecutar este script." -ForegroundColor Yellow
+    Write-Host "Presiona cualquier tecla para salir..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    exit 1
+}
+
+# ==========================================
+# 4. Motor de Sincronización (Packwiz)
 # ==========================================
 if (-Not (Test-Path -Path $BootstrapPath)) {
     Write-Log "Descargando motor de despliegue local (Packwiz Bootstrap)..." "INFO"
@@ -62,20 +86,14 @@ if (-Not (Test-Path -Path $BootstrapPath)) {
 Write-Log "Sincronizando estado local con el repositorio remoto..." "INFO"
 Write-Host "--------------------------------------------------------" -ForegroundColor DarkGray
 
-# Ejecución del proceso. Al no tener validación previa, asumimos que 'java' está en el PATH del sistema.
-try {
-    $PackwizProcess = Start-Process -FilePath "java" -ArgumentList "-jar", "packwiz-installer-bootstrap.jar", "-s", "client", $PackwizTomlUrl -Wait -NoNewWindow -PassThru
-} catch {
-    Write-Log "Error crítico: El sistema no pudo ejecutar 'java'. Asegúrate de tenerlo instalado." "ERROR"
-    Read-Host "Presiona Enter para salir"
-    exit 1
-}
+# Ejecución del proceso
+$PackwizProcess = Start-Process -FilePath "java" -ArgumentList "-jar", "packwiz-installer-bootstrap.jar", "-s", "client", $PackwizTomlUrl -Wait -NoNewWindow -PassThru
 
 Write-Host "--------------------------------------------------------" -ForegroundColor DarkGray
 
 if ($PackwizProcess.ExitCode -ne 0) {
     Write-Log "Packwiz finalizó con código de error: $($PackwizProcess.ExitCode)" "ERROR"
-    Write-Log "Revisa el log en $LogFile y envíaselo al administrador." "WARN"
+    Write-Log "Revisa el log en $LogFile y envíaselo a Joaquín." "WARN"
     Read-Host "Presiona Enter para salir"
     exit 1
 }
@@ -83,7 +101,7 @@ if ($PackwizProcess.ExitCode -ne 0) {
 Write-Log "Sincronización finalizada exitosamente." "OK"
 
 # ==========================================
-# 4. Cierre
+# 5. Cierre
 # ==========================================
 Write-Log "¡Todo listo! Cierra esta ventana y abre el juego desde tu launcher." "OK"
 Start-Sleep -Seconds 3
