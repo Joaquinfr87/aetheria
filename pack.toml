@@ -1,16 +1,13 @@
 name = "Aetheria"
-author = "Tostadora"
+author = "tosta"
 version = "1.0.0"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "18804461212d182981151ac52e6403f38afaf356da9d938f3618c54f41a4e090"
+hash = "42f34280edeaad53e45c6eb62f48dc3ceace571440504bfbed517cd82e10c174"
 
 [versions]
 minecraft = "1.21.1"
 quilt = "0.30.0-beta.7"
-
-[options]
-acceptable-game-versions = ["1.20.1", "1.20.4", "1.21", "1.21.2"]
