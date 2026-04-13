@@ -1,13 +1,13 @@
 name = "Dynamic FPS"
-filename = "dynamic-fps-3.11.4+minecraft-1.21.0-neoforge.jar"
-side = "both"
+filename = "dynamic-fps-3.11.4+minecraft-1.21.0-quilt.jar"
+side = "client"
 
 [download]
-hash-format = "sha1"
-hash = "35b17e95b2b65930116ccc83e0cc358ac1bfcf9e"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/LQ3K71Q1/versions/LqevwKp5/dynamic-fps-3.11.4%2Bminecraft-1.21.0-quilt.jar"
+hash-format = "sha512"
+hash = "d73a5a74265c4d7c382994497f8b714a267e82c3aa43cdb6b84878a0711ff402dd064bcceb2dc9a1bc809d174418b53eaf142dac2d1d3929c1be11482996bf58"
 
 [update]
-[update.curseforge]
-file-id = 7546938
-project-id = 335493
+[update.modrinth]
+mod-id = "LQ3K71Q1"
+version = "LqevwKp5"

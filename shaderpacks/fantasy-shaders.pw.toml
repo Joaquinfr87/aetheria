@@ -1,0 +1,13 @@
+name = "Fantasy Shaders Reimagined"
+filename = "Fantasy Shaders Reimagined v1.0.1.zip"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/l6di6hYz/versions/gYiSOhDW/Fantasy%20Shaders%20Reimagined%20v1.0.1.zip"
+hash-format = "sha512"
+hash = "bd796c449ca711d47833968e19504e7e34bae15e3e6353b20cef511fb742da6bbb6a3c6e11e7c456e16efd7c391a84b7be79b5874d14e85731884e75369585dd"
+
+[update]
+[update.modrinth]
+mod-id = "l6di6hYz"
+version = "gYiSOhDW"

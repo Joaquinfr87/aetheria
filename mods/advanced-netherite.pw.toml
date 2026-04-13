@@ -1,13 +1,13 @@
-name = "Advanced Netherite (Forge / NeoForge)"
-filename = "advancednetherite-neoforge-2.3.1-1.21.1.jar"
+name = "Advanced Netherite"
+filename = "advancednetherite-fabric-2.3.1-1.21.1.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "99003aafa635f316bdcf2db4a70989890a4d944d"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/CFX9ftUJ/versions/sfkuLHyi/advancednetherite-fabric-2.3.1-1.21.1.jar"
+hash-format = "sha512"
+hash = "9408f54cd173c06066797592e6c92ee22e6fdf9adde55a988f8bfda3f7f66194ffb4ca35ed3e691653904b66ee445aadbb20ff9accedac7dd6b66e83fb8f0c14"
 
 [update]
-[update.curseforge]
-file-id = 7039369
-project-id = 495336
+[update.modrinth]
+mod-id = "CFX9ftUJ"
+version = "sfkuLHyi"

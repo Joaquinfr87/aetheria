@@ -1,13 +1,13 @@
 name = "Simple Voice Chat"
-filename = "voicechat-neoforge-1.21.1-2.6.16.jar"
+filename = "voicechat-quilt-1.21.1-2.6.16.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "d813f78eeeb6a27e2529df098128a12e4c043dd8"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/9eGKb6K1/versions/AqYMDR31/voicechat-quilt-1.21.1-2.6.16.jar"
+hash-format = "sha512"
+hash = "5580caf72b2d5d02cb2d254dcc8afb893250432a3b9cc63ad4c33d47fa6fb3656519e811e41c43596c60ce3119e7710e7c3cd5d5d2ad0cd98c348ff9311017db"
 
 [update]
-[update.curseforge]
-file-id = 7905051
-project-id = 416089
+[update.modrinth]
+mod-id = "9eGKb6K1"
+version = "AqYMDR31"

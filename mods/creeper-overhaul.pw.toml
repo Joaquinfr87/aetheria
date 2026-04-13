@@ -1,13 +1,13 @@
 name = "Creeper Overhaul"
-filename = "CreeperOverhaul-neoforge-1.21.1-4.0.6.jar"
+filename = "CreeperOverhaul-fabric-1.21.1-4.0.6.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "5a07cc032df790e7d110ad3dedb7a76253ffd565"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/MI1LWe93/versions/O6yuPiE8/CreeperOverhaul-fabric-1.21.1-4.0.6.jar"
+hash-format = "sha512"
+hash = "696ed6a972c49186f081c636d929f1058bbbe20e90faf1cb03937c4915a0583f258168b03ccf9d5b97a003c17cae4428cbfd94cfa250b059acb4f9b802af7e08"
 
 [update]
-[update.curseforge]
-file-id = 6051279
-project-id = 561625
+[update.modrinth]
+mod-id = "MI1LWe93"
+version = "O6yuPiE8"

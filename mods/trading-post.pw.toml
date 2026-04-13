@@ -1,13 +1,13 @@
 name = "Trading Post"
-filename = "TradingPost-v21.1.1-1.21.1-NeoForge.jar"
+filename = "TradingPost-v21.1.1-1.21.1-Fabric.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "030a4f9fb5be80db3f982ded814fbc36e5101a7e"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/8pcjMDgj/versions/JxSbQLVf/TradingPost-v21.1.1-1.21.1-Fabric.jar"
+hash-format = "sha512"
+hash = "267508dc054046ef5600ea51558a0047cf560e2f551f936021b1b5ea5679cb54eb9a35842d015cc4b5e3e29b1b24c2ffa86e49f1098af1820f7292623cbd8a22"
 
 [update]
-[update.curseforge]
-file-id = 7143451
-project-id = 539057
+[update.modrinth]
+mod-id = "8pcjMDgj"
+version = "JxSbQLVf"

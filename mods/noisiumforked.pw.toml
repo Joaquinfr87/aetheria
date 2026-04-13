@@ -1,13 +1,13 @@
 name = "NoisiumForked"
-filename = "noisium-neoforge-2.7.0+mc1.21-1.21.1.jar"
-side = "both"
+filename = "noisium-fabric-2.7.0+mc1.21-1.21.1.jar"
+side = "server"
 
 [download]
-hash-format = "sha1"
-hash = "420b3a234d8f83fa6b24d8dd26333b6256af7911"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/hasdd01q/versions/bQdp8Lez/noisium-fabric-2.7.0%2Bmc1.21-1.21.1.jar"
+hash-format = "sha512"
+hash = "501cee71e8f3795d8038abc83372b5095bd46a7fa332b3827d6b8c035d7b34049ce908b43d6724417f8e3c85a27b7e62f5b2968136af1b8425030a044c58830e"
 
 [update]
-[update.curseforge]
-file-id = 7569595
-project-id = 1357563
+[update.modrinth]
+mod-id = "hasdd01q"
+version = "bQdp8Lez"

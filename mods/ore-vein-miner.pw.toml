@@ -3,11 +3,11 @@ filename = "ore-vein-miner-1.2.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "130bed70ec78bc9883d0df8820fb6e107e6a6c17"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/Xl2GihRU/versions/ywWmBkJL/ore-vein-miner-1.2.jar"
+hash-format = "sha512"
+hash = "c32ba97d8c47fce08ef6d1674a2c00f043bfd5881755b878a38db5e98eb8191c22668e1f2edf88e51dceba3b798dbf3e63a6ecc9ac36a45b53a160d7f9c093be"
 
 [update]
-[update.curseforge]
-file-id = 7713701
-project-id = 1357245
+[update.modrinth]
+mod-id = "Xl2GihRU"
+version = "ywWmBkJL"

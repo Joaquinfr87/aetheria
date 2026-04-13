@@ -1,13 +1,13 @@
 name = "Regions Unexplored"
-filename = "regions-unexplored-0.6+beta4-neoforge-21.1.jar"
+filename = "regions-unexplored-0.6+beta4-fabric-21.1.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "66b009aee6545da64232835a24f1a9a765736720"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/Tkikq67H/versions/QlcEHH8n/regions-unexplored-0.6%2Bbeta4-fabric-21.1.jar"
+hash-format = "sha512"
+hash = "4ea85ccbf048a264566950d8632220961f05b8731680752cc463af7810cf1dfb811f93ca29414e3972b301effba15f1ce255aea59f33254a0c39ccae8049d617"
 
 [update]
-[update.curseforge]
-file-id = 7826194
-project-id = 659110
+[update.modrinth]
+mod-id = "Tkikq67H"
+version = "QlcEHH8n"

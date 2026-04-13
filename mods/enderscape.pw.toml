@@ -1,13 +1,13 @@
 name = "Enderscape"
-filename = "enderscape-neoforge-1.0.9+mc1.21.1.jar"
+filename = "enderscape-fabric-2.1.0+mc1.21.1.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "5d45e8282989817ee04682620c9351c76dc62308"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/btCrWvHr/versions/cuWv6VSU/enderscape-fabric-2.1.0%2Bmc1.21.1.jar"
+hash-format = "sha512"
+hash = "cecf0cbcd9048b5056fd0acdf03273bfba1c0e65f13a16df9ada98f3de59eb5190d1c2fe8a4f16ffbf42cb88122da0d8be42c13c4be861d3f42eec07e933fa69"
 
 [update]
-[update.curseforge]
-file-id = 6875961
-project-id = 536638
+[update.modrinth]
+mod-id = "btCrWvHr"
+version = "cuWv6VSU"

@@ -1,13 +1,13 @@
 name = "Trimmed"
-filename = "trimmed-neo-1.21-3.0.0.jar"
+filename = "trimmed-fabric-1.21-3.0.0.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "c1ee534f00f4ee476e868f4db4dea99c7d41570d"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/q8k4zHw5/versions/ecUGnzlY/trimmed-fabric-1.21-3.0.0.jar"
+hash-format = "sha512"
+hash = "b1e064040565c6313f6d54ad45fcd01c985f409983e6f4d51b373178c376327a5717cebda16f90a176a9151f595a7807bc62be82597489a77fa0f024ab7aea76"
 
 [update]
-[update.curseforge]
-file-id = 5424737
-project-id = 857036
+[update.modrinth]
+mod-id = "q8k4zHw5"
+version = "ecUGnzlY"

@@ -1,13 +1,13 @@
-name = "Polymorph (Fabric/Forge/Quilt)"
-filename = "polymorph-neoforge-1.1.0+1.21.1.jar"
+name = "Polymorph"
+filename = "polymorph-fabric-1.1.0+1.21.1.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "84f8c539fa326dc723ae62b7a6916d6b01982d07"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/tagwiZkJ/versions/Ng5Y6KVo/polymorph-fabric-1.1.0%2B1.21.1.jar"
+hash-format = "sha512"
+hash = "701cbff45976dcc5e8c480582fdcfaf20565d17b763a091e551debd343c37430cd711844d3d11b3f1abb236cca56ae907045b64c6ac5f70553aaa98e4fb69527"
 
 [update]
-[update.curseforge]
-file-id = 6794589
-project-id = 388800
+[update.modrinth]
+mod-id = "tagwiZkJ"
+version = "Ng5Y6KVo"

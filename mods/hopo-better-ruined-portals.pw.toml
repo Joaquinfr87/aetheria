@@ -3,11 +3,11 @@ filename = "HopoBetterRuinedPortals-[1.21.1-1.21.3]-1.4.4b.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "52875dc5fd560c99721565bfced9c47dbff9acfa"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/hIpLSyga/versions/JosVVZQn/HopoBetterRuinedPortals-%5B1.21.1-1.21.3%5D-1.4.4b.jar"
+hash-format = "sha512"
+hash = "5c19550c0d26490b329bf2fe0448dcac39e7a69954f80b7f6158472a4f9d4fffb20e0e71306ad222b18c8a9ba2444bd756df251f2e643a939a48ba4e826e561d"
 
 [update]
-[update.curseforge]
-file-id = 6420137
-project-id = 632624
+[update.modrinth]
+mod-id = "hIpLSyga"
+version = "JosVVZQn"

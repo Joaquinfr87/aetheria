@@ -1,13 +1,13 @@
 name = "Diagonal Walls"
-filename = "DiagonalWalls-v21.1.2-1.21.1-NeoForge.jar"
+filename = "DiagonalWalls-v21.1.2-1.21.1-Fabric.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "f2aed3ac68f5cc5e41ccc9d493f2706b0df53296"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/FQgc8dib/versions/CeH1sDcA/DiagonalWalls-v21.1.2-1.21.1-Fabric.jar"
+hash-format = "sha512"
+hash = "41ff3dad47560a096450519cdcaf079775373080700df0906f0bb5c37fbe1594a512deb70b42d3e9bb31cd68b52f11b0755da49d849344e7356b1beaab5fb214"
 
 [update]
-[update.curseforge]
-file-id = 5918894
-project-id = 969422
+[update.modrinth]
+mod-id = "FQgc8dib"
+version = "CeH1sDcA"

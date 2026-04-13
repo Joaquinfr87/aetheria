@@ -1,13 +1,13 @@
 name = "Connected Glass"
-filename = "connectedglass-1.1.14-neoforge-mc1.21.jar"
+filename = "connectedglass-1.1.14-fabric-mc1.21.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "0a44c13d6744e0eeec5bf38f58756a8e86e96f55"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/DghO0R02/versions/NnQWcI9h/connectedglass-1.1.14-fabric-mc1.21.jar"
+hash-format = "sha512"
+hash = "83579ae6cfbc6ac8ecb93be7177bf3e3a87f848931fd51befa4a26fcaefd7d1d833ee67b362d2f884bfcf53421ab2dc66697a02e52c52117256e3afd31fccf78"
 
 [update]
-[update.curseforge]
-file-id = 6811960
-project-id = 383129
+[update.modrinth]
+mod-id = "DghO0R02"
+version = "NnQWcI9h"

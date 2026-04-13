@@ -1,0 +1,13 @@
+name = "Athena"
+filename = "athena-fabric-1.21-4.0.3.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/b1ZV3DIJ/versions/PYmIa5pZ/athena-fabric-1.21-4.0.3.jar"
+hash-format = "sha512"
+hash = "df4b63c11d8b30ce28ae2b206eeb4b27084b2a2ba6a9544ca9d485eb98ea3ca33da68ac8eee70d14b413ebb6a52b998a75ce2c071c0a5111516ef8304131b319"
+
+[update]
+[update.modrinth]
+mod-id = "b1ZV3DIJ"
+version = "PYmIa5pZ"
