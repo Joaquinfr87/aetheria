@@ -1,0 +1,13 @@
+name = "Paragliders"
+filename = "Paraglider-fabric-20.1.4.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/esqWA0aQ/versions/6qmc3Nyl/Paraglider-fabric-20.1.4.jar"
+hash-format = "sha512"
+hash = "5c1b52bb7311f8f9aa831f2ba22fdccfaba95ee76e2f7d98a0c46dbc3812c6ecfabc52d94cd022a75378b08afd216de24c9e5f6a06018ddf53bb38a1b7988375"
+
+[update]
+[update.modrinth]
+mod-id = "esqWA0aQ"
+version = "6qmc3Nyl"

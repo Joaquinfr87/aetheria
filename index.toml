@@ -455,6 +455,11 @@ hash = "84cb0dcad9ac46d22adba4fb7924951affa6ac5e46027a3b25fa9a0db8d91b2b"
 metafile = true
 
 [[files]]
+file = "mods/paragliders.pw.toml"
+hash = "3d5d43dcc76d8b915e5bc412b45ece12f94cfb097a3ae51407fe34eccb8502a7"
+metafile = true
+
+[[files]]
 file = "mods/particle-core.pw.toml"
 hash = "97156c7cbfd94c3f457f5ef89ab65f1b963b1559f98fd3923ab40cf8cc21a905"
 metafile = true
