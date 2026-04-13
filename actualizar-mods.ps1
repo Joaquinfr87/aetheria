@@ -1,107 +1,115 @@
 <#
 .SYNOPSIS
-    Actualizador Automático del Modpack del Servidor (Versión Portable)
+    Actualizador Automático del Modpack (Zero-Dependencies)
 .DESCRIPTION
-    Sincroniza el estado local de Minecraft con el repositorio remoto usando Packwiz.
-    Diseñado para ejecutarse directamente dentro de la carpeta de la instancia/juego.
+    Sincroniza los mods usando Packwiz. Si el usuario no tiene Java, 
+    el script descarga una versión portable localmente sin tocar el sistema operativo.
 #>
 
 # ==========================================
-# 1. Entorno y Configuración Estricta
+# 1. Configuración General
 # ==========================================
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-# URLs (Ya con el enlace RAW corregido)
 $PackwizTomlUrl = "https://raw.githubusercontent.com/Joaquinfr87/aetheria/main/pack.toml"
 $BootstrapUrl = "https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest/download/packwiz-installer-bootstrap.jar"
+$JreDownloadUrl = "https://api.adoptium.net/v3/binary/latest/21/ga/windows/x64/jre/hotspot/normal/eclipse"
 
-# ==========================================
-# ¡LA MAGIA PORTABLE ESTÁ AQUÍ!
-# ==========================================
-# En lugar de ir a %APPDATA%, usamos el directorio actual donde está este script
 $MinecraftDir = $PSScriptRoot 
-$LogFile = Join-Path -Path $MinecraftDir -ChildPath "actualizador-servidor.log"
+$LogFile = Join-Path -Path $MinecraftDir -ChildPath "actualizador.log"
 $BootstrapPath = Join-Path -Path $MinecraftDir -ChildPath "packwiz-installer-bootstrap.jar"
+$RuntimeDir = Join-Path -Path $MinecraftDir -ChildPath ".java-runtime" # Carpeta oculta para Java
+$JreZipPath = Join-Path -Path $MinecraftDir -ChildPath "temp-jre.zip"
 
-# Nos aseguramos de estar trabajando en esta misma carpeta
 Set-Location -Path $MinecraftDir
 
-# ==========================================
-# 2. Sistema de Logging Integrado
-# ==========================================
 function Write-Log {
     param([string]$Message, [string]$Level = "INFO")
-    $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $Timestamp = Get-Date -Format "HH:mm:ss"
     $LogEntry = "[$Timestamp] [$Level] $Message"
-    
     switch ($Level) {
         "INFO"  { Write-Host $Message -ForegroundColor Cyan }
         "OK"    { Write-Host $Message -ForegroundColor Green }
         "WARN"  { Write-Host $Message -ForegroundColor Yellow }
         "ERROR" { Write-Host $Message -ForegroundColor Red }
     }
-    
     Add-Content -Path $LogFile -Value $LogEntry
 }
 
 if (Test-Path $LogFile) { Clear-Content $LogFile }
 Clear-Host
-Write-Log "Iniciando cliente de sincronización (Modo Portable)..." "INFO"
-Write-Log "Directorio de trabajo: $MinecraftDir" "INFO"
+Write-Log "Iniciando cliente (Modo Auto-Suficiente)..." "INFO"
 
 # ==========================================
-# 3. Validación de Dependencias (Java)
+# 2. Gestión del Embedded Java Runtime
 # ==========================================
-Write-Log "Verificando dependencias del sistema..." "INFO"
-try {
-    $JavaVer = & java -version 2>&1
-    Write-Log "Java detectado correctamente." "OK"
-} catch {
-    Write-Log "Java no está instalado o no está en el PATH." "ERROR"
-    Write-Log "Abriendo el navegador para descargar Java 21..." "WARN"
-    Start-Sleep -Seconds 2
-    Start-Process "https://adoptium.net/es/temurin/releases/?version=21"
-    
-    Write-Host "`nPor favor, instala Java y vuelve a ejecutar este script." -ForegroundColor Yellow
-    Write-Host "Presiona cualquier tecla para salir..."
-    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-    exit 1
+$JavaExePath = $null
+
+# Primero, comprobamos si ya descargamos nuestro Java portable en el pasado
+if (Test-Path $RuntimeDir) {
+    # Busca el ejecutable java.exe dentro de la carpeta extraída
+    $JavaExePath = (Get-ChildItem -Path $RuntimeDir -Filter "java.exe" -Recurse | Select-Object -First 1).FullName
 }
 
-# ==========================================
-# 4. Motor de Sincronización (Packwiz)
-# ==========================================
-if (-Not (Test-Path -Path $BootstrapPath)) {
-    Write-Log "Descargando motor de despliegue local (Packwiz Bootstrap)..." "INFO"
+# Si no existe, lo descargamos y extraemos (solo ocurrirá la primera vez)
+if (-not $JavaExePath) {
+    Write-Log "Entorno Java no detectado. Descargando Java Portable (aprox 40MB)..." "WARN"
+    Write-Log "Esto solo pasará la primera vez. Por favor, espera..." "WARN"
+    
     try {
-        Invoke-WebRequest -Uri $BootstrapUrl -OutFile $BootstrapPath -UseBasicParsing
-        Write-Log "Motor descargado con éxito." "OK"
+        Invoke-WebRequest -Uri $JreDownloadUrl -OutFile $JreZipPath -UseBasicParsing
+        
+        Write-Log "Extrayendo archivos de Java..." "INFO"
+        # Creamos la carpeta si no existe
+        if (-Not (Test-Path $RuntimeDir)) { New-Item -ItemType Directory -Path $RuntimeDir | Out-Null }
+        
+        # Descomprimimos el zip nativamente
+        Expand-Archive -Path $JreZipPath -DestinationPath $RuntimeDir -Force
+        
+        # Borramos el zip para no ocupar espacio
+        Remove-Item $JreZipPath -Force
+        
+        # Buscamos la ruta exacta del nuevo java.exe
+        $JavaExePath = (Get-ChildItem -Path $RuntimeDir -Filter "java.exe" -Recurse | Select-Object -First 1).FullName
+        Write-Log "Java Portable configurado con éxito." "OK"
+        
     } catch {
-        Write-Log "Fallo de red al descargar el motor. Verifica tu conexión." "ERROR"
+        Write-Log "Error crítico al descargar Java. Revisa tu conexión a internet." "ERROR"
+        Read-Host "Presiona Enter para salir"
         exit 1
     }
 }
 
-Write-Log "Sincronizando estado local con el repositorio remoto..." "INFO"
+# ==========================================
+# 3. Motor de Sincronización (Packwiz)
+# ==========================================
+if (-Not (Test-Path -Path $BootstrapPath)) {
+    Write-Log "Descargando motor Packwiz..." "INFO"
+    Invoke-WebRequest -Uri $BootstrapUrl -OutFile $BootstrapPath -UseBasicParsing
+}
+
+Write-Log "Sincronizando mods y texturas con GitHub..." "INFO"
 Write-Host "--------------------------------------------------------" -ForegroundColor DarkGray
 
-# Ejecución del proceso
-$PackwizProcess = Start-Process -FilePath "java" -ArgumentList "-jar", "packwiz-installer-bootstrap.jar", "-s", "client", $PackwizTomlUrl -Wait -NoNewWindow -PassThru
+# ¡AQUÍ ESTÁ LA MAGIA! En lugar de llamar a 'java' global, usamos nuestra ruta portable absoluta
+$PackwizArgs = "-jar `"$BootstrapPath`" -s client `"$PackwizTomlUrl`""
+
+try {
+    # Usamos el operador '&' (Call Operator) para ejecutar una ruta que contiene espacios
+    $PackwizProcess = Start-Process -FilePath $JavaExePath -ArgumentList $PackwizArgs -Wait -NoNewWindow -PassThru
+} catch {
+    Write-Log "Error al ejecutar Packwiz." "ERROR"
+    exit 1
+}
 
 Write-Host "--------------------------------------------------------" -ForegroundColor DarkGray
 
 if ($PackwizProcess.ExitCode -ne 0) {
     Write-Log "Packwiz finalizó con código de error: $($PackwizProcess.ExitCode)" "ERROR"
-    Write-Log "Revisa el log en $LogFile y envíaselo a Joaquín." "WARN"
     Read-Host "Presiona Enter para salir"
     exit 1
 }
 
-Write-Log "Sincronización finalizada exitosamente." "OK"
-
-# ==========================================
-# 5. Cierre
-# ==========================================
-Write-Log "¡Todo listo! Cierra esta ventana y abre el juego desde tu launcher." "OK"
+Write-Log "¡Servidor actualizado! Cierra esto y abre tu juego." "OK"
 Start-Sleep -Seconds 3
