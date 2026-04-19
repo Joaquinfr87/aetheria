@@ -1,0 +1,13 @@
+name = "Smooth Boot"
+filename = "SmoothBoot-NeoForge+1.21-1.0.0 (1).jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "305cf6ea335b5a61742927642dc3bdf0c7ea55e8"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7451554
+project-id = 1427359

@@ -1,13 +1,13 @@
 name = "Aetheria"
-author = "tosta"
+author = "Tostadora"
 version = "1.0.0"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "42f34280edeaad53e45c6eb62f48dc3ceace571440504bfbed517cd82e10c174"
+hash = "0d02a3359a7ea6dd03ea6bc03799bf8d2a18ce55bdb1cc9f3605df129eb66bb8"
 
 [versions]
 minecraft = "1.21.1"
-quilt = "0.30.0-beta.7"
+neoforge = "21.1.224"

@@ -1,0 +1,13 @@
+name = "Enchantments Expansion (Fabric/Forge/NeoForge/Quilt)"
+filename = "enchantments-expansion-v1.2.0-1.21.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "1629243243d7be137ec2cfaa0b3a2d6046bab09f"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7329293
+project-id = 1400139
